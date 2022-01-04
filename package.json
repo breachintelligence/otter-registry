@@ -1,0 +1,23 @@
+{
+  "name": "otter-registry",
+  "version": "1.0.0",
+  "description": "Registers fictitious otters in fictitious habitats.",
+  "scripts": {
+    "start": "lux serve",
+    "test": "lux test"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "6.17.0",
+    "babel-preset-lux": "2.0.2",
+    "bcryptjs": "^2.4.3",
+    "faker": "^5.5.3",
+    "knex": "0.12.6",
+    "lux-framework": "1.2.3",
+    "sqlite3": "5.0.2"
+  },
+  "engines": {
+    "node": ">= 6.0"
+  }
+}
