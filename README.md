@@ -23,7 +23,7 @@ Otter registry is a Lux Framework generated api server for saving and retreiving
 
 Generate a test suite using any free and easy to use lanaguage or framework that 
 
-* validates expected behavior of each endpoint
+* validates expected behavior of each resource endpoint
 * ensure CRUD operations against each resource work as expected
 
 ## Resources
@@ -53,11 +53,11 @@ Each resource endpoint implements
 
 * `GET /{resource}` - Lists the resources
   * returns 200 and a resource array
-* `POST /{resource}` - Creates a new resource
+* `POST /{resource}` - Creates a new resource (auth required)
   * returns the update resource (code 200)
-* `PATCH /{resource}/:id` - Updates an existing resource
+* `PATCH /{resource}/:id` - Updates an existing resource  (auth required)
   * returns the updated resource (code 200)
-* `DELETE  /{resource}/:id` - Deletes the resource
+* `DELETE  /{resource}/:id` - Deletes the resource (auth required)
   * returns a code 204 on success
 
 ### Paging (out of scope)
@@ -158,6 +158,52 @@ The `GET` method accepts sorting query parameters
 }
 
 ```
+
+## Authentication
+For the purposes of this the concept of users is lightly implemented and can be ignored in testing purposes for the most part. The seed data adds a default user. All users have write access.
+
+```
+POST /users/login
+{
+    "data": {
+        "type": "users",
+        "attributes": {
+            "email": "admin@localhost.domain",
+            "password": "1234567890"
+            }
+    }
+}
+```
+
+Will return a token that can be used as a query parameter to restricted resource methods.
+```
+{
+    "data": {
+        "token": "32f976136fe113e800649f92137f1348",
+        "email": "admin@localhost.domain"
+    }
+}
+
+```
+For Example
+```
+POST /{resource}?token=32f976136fe113e800649f92137f1348
+{
+  "data": {
+    ...
+  }
+}
+```
+
+Users have endpoints similar to the other resources that can be ignored but are available if needed to the authed user for creating or deleting other users.
+```
+GET /admin/users
+POST /admin/users?token=
+PATCH /admin/users/:id?token=
+DELETE /admin/users/:id?token=
+```
+
+
 
 ## Further Reading / Useful Links
 *   [Lux](https://github.com/postlight/lux/)

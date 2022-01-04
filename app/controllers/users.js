@@ -9,6 +9,8 @@ class UsersController extends Controller {
     'email',
     'password'
   ];
+  
+  query = [ 'token' ];
 
   async login(req) {
     const {
