@@ -25,6 +25,11 @@ Generate a test suite using any free and easy to use lanaguage or framework that
 
 * validates expected behavior of each resource endpoint
 * ensure CRUD operations against each resource work as expected
+* ensure paging on the resources `GET` method works as expected
+
+## GOAL
+
+Provide a deliverable that can be used against a local dev version of this repository to verify any functionality in-scope breaking changes made by the evaluator are found by the testing suite.
 
 ## Resources
 There are two main resources `Otters` and `Habitats`. There is a many to one relationship with Otters to Habitats.
@@ -60,8 +65,8 @@ Each resource endpoint implements
 * `DELETE  /{resource}/:id` - Deletes the resource (auth required)
   * returns a code 204 on success
 
-### Paging (out of scope)
-The `GET` method accepts paging query parameters
+### Paging 
+The `GET` method accepts paging query parameters.
 `?page[size]=2&page[number]=1`
 
 ### Filtering (out of scope)
