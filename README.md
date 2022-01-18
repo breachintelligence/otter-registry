@@ -4,6 +4,8 @@ Otter registry is a Lux Framework generated api server for saving and retreiving
 
 ## Installation
 
+Requires node v12
+
 *   `git clone https://github.com/breachintelligence/otter-registry`
 *   `cd otter-registry`
 *   `npm install`
